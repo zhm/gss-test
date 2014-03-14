@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="gss-not-ready">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GSS Test</title>
+    <style type="text/css">
+    .gss-not-ready { display: none; }
+    </style>
+    <link rel="stylesheet" type="text/gss" href="styles.gss">
+  </head>
+  <body>
+    <script>
+      GSS_CONFIG = {
+        worker: "/bower_components/gss/dist/worker.js",
+        defaultStrength: "weak",
+        fractionalPixels: false,
+        readyClass: true
+      }
+    </script>
+    <script src="/bower_components/gss/dist/gss.js"></script>
+
+    <div id="container">
+      <div id="box1">
+        Box 1
+      </div>
+      <div id="box2">
+        Box 2
+      </div>
+      <div id="box3">
+        Box 3
+      </div>
+      <div id="box4">
+        Box 4
+      </div>
+    </div>
+
+  </body>
+</html>
+

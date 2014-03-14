@@ -1,0 +1,97 @@
+
+/* body and window sizes are always equal and set to 'window-width' variable */
+[window-width] == ::window[width] == body[width] !require;
+[window-height] == ::window[height] == body[height] !require;
+
+/* some reasonable breakpoints for the 3 states */
+[max-container-width] == 960 !require;
+[med-container-width] == 640 !require;
+[min-container-width] == 320 !require;
+
+/* the container must always be less than window width */
+#container[width] <= [max-container-width] !require;
+
+/* place the container within the window */
+#container[top] == 0;
+
+/* the container width must always be less than the max breakpoint */
+#container[width] <= [window-width] !require;
+
+/* center the container horizontally in the window */
+#container[center-x] == ::window[center-x];
+
+/* the boxes always have equal widths */
+#box1[width] == #box2[width] == #box3[width] == #box4[width];
+
+/* the boxes always have equal heights */
+#box1[height] == #box2[height] == #box3[height] == #box4[height];
+
+/* the heights are always 200 */
+#box1[height] == 200;
+
+/* responsive element queries! */
+@if #container[width] >= [max-container-width] {
+  /*
+  1-2-3-4
+  */
+
+  @vertical |-[#box1]-| in(#container) gap(10);
+  @vertical |-[#box2]-| in(#container) gap(10);
+  @vertical |-[#box3]-| in(#container) gap(10);
+  @vertical |-[#box4]-| in(#container) gap(10);
+  @horizontal |-[#box1]-[#box2]-[#box3]-[#box4]-| in(#container) gap(10);
+}
+@else #container[width] >= [med-container-width] {
+  /*
+  1-2
+  3-4
+  */
+
+  @horizontal |-[#box1]-[#box2]| in(#container) gap(10);
+  @horizontal |-[#box3]-[#box4]| in(#container) gap(10);
+  @vertical |-[#box1]-[#box3]| in(#container) gap(10);
+  @vertical |-[#box2]-[#box4]| in(#container) gap(10);
+}
+@else {
+  /*
+  1
+  2
+  3
+  4
+  */
+
+  @horizontal |-[#box1]-| in(#container) gap(10);
+  @horizontal |-[#box2]-| in(#container) gap(10);
+  @horizontal |-[#box3]-| in(#container) gap(10);
+  @horizontal |-[#box4]-| in(#container) gap(10);
+  @vertical |-[#box1]-[#box2]-[#box3]-[#box4]-| in(#container) gap(10);
+}
+
+
+
+/* boring stuff */
+
+html {
+  font-family: sans-serif;
+}
+
+#container {
+  div {
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+  }
+}
+
+#box1 {
+  background-color: red;
+}
+#box2 {
+  background-color: green;
+}
+#box3 {
+  background-color: blue;
+}
+#box4 {
+  background-color: yellow;
+}

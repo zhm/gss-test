@@ -1,4 +1,3 @@
-
 /* body and window sizes are always equal and set to 'window-width' variable */
 [window-width] == ::window[width] == body[width] !require;
 [window-height] == ::window[height] == body[height] !require;
